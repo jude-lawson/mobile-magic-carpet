@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import { Icon } from 'react-native-elements';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -22,6 +23,9 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <Text>Magic Carpet</Text>
+        <Icon
+          name='settings'
+          size={80} />
       </View>
     );
   }
