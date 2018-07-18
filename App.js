@@ -22,10 +22,11 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Magic Carpet</Text>
         <Icon
+          containerStyle={styles.settingsIcon}
           name='settings'
-          size={80} />
+          size={40} />
+        <Text>Magic Carpet</Text>
       </View>
     );
   }
@@ -37,5 +38,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+  settingsIcon: {
+    position: 'absolute',
+    top: 40,
+    right: 20
   }
 });
