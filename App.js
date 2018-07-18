@@ -17,16 +17,20 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+// type Props = {};
+export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Icon
           containerStyle={styles.settingsIcon}
           name='settings'
-          size={40} />
-        <Text>Magic Carpet</Text>
+          size={40}
+          onPress={() => alert('hello')} />
+        <Text 
+          style={styles.mainHeading}>
+          Magic Carpet
+        </Text>
       </View>
     );
   }
@@ -43,5 +47,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 40,
     right: 20
+  },
+  mainHeading: {
+    color: 'cornflowerblue',
+    fontSize: 20
   }
 });
