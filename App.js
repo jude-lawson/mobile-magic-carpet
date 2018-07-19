@@ -41,7 +41,6 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <View style={styles.div} />
         <SettingsIcon />
         <MagicCarpetButton clickEvent={this.createAdventure} />
           <Text>{this.state.content}</Text>
