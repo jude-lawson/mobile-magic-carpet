@@ -8,9 +8,9 @@
 
 import React, {Component} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Button } from 'react-native-elements';
 
 import SettingsIcon from './SettingsIcon'
+import MagicCarpetButton from './MagicCarpetButton'
 
 export default class App extends Component {
   constructor(props) {
@@ -43,14 +43,7 @@ export default class App extends Component {
       <View style={styles.container}>
       <View style={styles.div} />
         <SettingsIcon />
-        <Button 
-          title='Magic Carpet'
-          buttonStyle={{
-            backgroundColor: '#ab37b6',
-            borderRadius: 50,
-            width: 200
-          }}
-          onPress={this.createAdventure} />
+        <MagicCarpetButton clickEvent={this.createAdventure} />
           <Text>{this.state.content}</Text>
       </View>
     );
