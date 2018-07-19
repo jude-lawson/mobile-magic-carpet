@@ -7,17 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
-import { Icon, Button } from 'react-native-elements';
+import { StyleSheet, Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import SettingsIcon from './SettingsIcon'
 
-// type Props = {};
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -48,11 +42,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
       <View style={styles.div} />
-        <Icon
-          containerStyle={styles.settingsIcon}
-          name='settings'
-          size={40}
-          onPress={() => alert('hello')} />
+        <SettingsIcon />
         <Button 
           title='Magic Carpet'
           buttonStyle={{
@@ -73,27 +63,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#7998fe'
-  },
-  settingsIcon: {
-    position: 'absolute',
-    top: 40,
-    right: 20
   }
-  // div: {
-  //   backgroundColor: '#AADDFF',
-  //   width: 0,
-  //   height: 0,
-  //   backgroundColor: 'transparent',
-  //   borderRightWidth: 100,
-  //   borderRightColor: '#000000',
-  //   borderTopWidth: 100,
-  //   borderTopColor: '#000000',
-  //   borderLeftWidth: 50,
-  //   borderLeftColor: 'red',
-  //   borderBottomWidth: 50,
-  //   borderBottomColor: 'red',
-  //   position: 'absolute',
-  //   top: 0,
-  //   right: 0
-  // }
 });
