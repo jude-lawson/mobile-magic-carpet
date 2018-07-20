@@ -1,0 +1,15 @@
+import React, { Component } from 'react'
+
+import LyftLoginButton from './LyftLoginButton';
+
+export default class LoginPage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <LyftLoginButton handler={this.props.handler}/>
+    );
+  }
+}
