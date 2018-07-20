@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Button, Text } from 'react-native-elements';
 
-import LandingPage from './LandingPage'
+import LandingPage from './LandingPage';
+import ConfirmationPage from './ConfirmationPage';
 
 export default class EstimatePage extends Component {
   constructor(props) {
@@ -44,7 +45,7 @@ export default class EstimatePage extends Component {
         </Card>
       )
     } else if (this.state.confirmed === 'confirmed') {
-      content = <Text>Your ride is on its way!</Text>
+      content = <ConfirmationPage />
     } else if (this.state.confirmed === 'declined') {
       content = <LandingPage />
     }
