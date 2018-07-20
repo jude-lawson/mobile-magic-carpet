@@ -3,6 +3,7 @@ import { Card, Button, Text } from 'react-native-elements';
 
 import LandingPage from './LandingPage';
 import ConfirmationPage from './ConfirmationPage';
+import HomeButton from './HomeButton';
 
 export default class EstimatePage extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class EstimatePage extends Component {
 
     this.handleConfirmation = this.handleConfirmation.bind(this)
     this.handleDecline = this.handleDecline.bind(this)
+    this.handleHomeClick = this.handleHomeClick.bind(this)
   }
 
   handleConfirmation() {
@@ -28,21 +30,30 @@ export default class EstimatePage extends Component {
     }));
   }
 
+  handleHomeClick() {
+    this.setState(() => ({
+      confirmed: 'declined'
+    }));
+  }
+
   render() {
     let content;
     if (!this.state.confirmed) {
       content = (
-        <Card
-        title='Confirm Your Price'>
-          <Text>This ride will cost: {this.props.price}</Text>
-          <Text>Does this work for you?</Text>
-          <Button
-            title='YES'
-            onPress={this.handleConfirmation} />
-          <Button
-            title='NO'
-            onPress={this.handleDecline} />
-        </Card>
+        <>
+          <HomeButton handleHomeClick={this.handleHomeClick} />
+          <Card
+          title='Confirm Your Price'>
+            <Text>This ride will cost: {this.props.price}</Text>
+            <Text>Does this work for you?</Text>
+            <Button
+              title='YES'
+              onPress={this.handleConfirmation} />
+            <Button
+              title='NO'
+              onPress={this.handleDecline} />
+          </Card>
+        </>
       )
     } else if (this.state.confirmed === 'confirmed') {
       content = <ConfirmationPage />
