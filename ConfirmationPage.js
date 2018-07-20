@@ -45,7 +45,7 @@ export default class ConfirmationPage extends Component {
             onPress={this.revealDestination} />
         </>
       );
-    } else if (this.state.destinationVisible) {
+    } else if (this.state.destinationVisible && !this.state.goHome) {
       content = (
         <>
           <HomeButton handleHomeClick={this.handleHomeClick} />
