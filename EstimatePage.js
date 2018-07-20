@@ -65,7 +65,7 @@ export default class EstimatePage extends Component {
         </>
       )
     } else if (this.state.confirmed === 'confirmed') {
-      content = <ConfirmationPage />
+      content = <ConfirmationPage data={this.props.data} />
     } else if (this.state.confirmed === 'declined') {
       content = <LandingPage />
     }

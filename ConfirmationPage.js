@@ -56,9 +56,46 @@ export default class ConfirmationPage extends Component {
           <HomeButton handleHomeClick={this.handleHomeClick} />
           <Card
             title='This is your destination'>
-            <Text></Text>
+            <Text>Name: {this.props.data.name}</Text>
+            <Text>Address: {this.props.data.street_address}</Text>
+            <Text>City: {this.props.data.city}</Text>
+            <Text>Rating: {this.props.data.rating}</Text>
           </Card>
         </>
+        // name: "Illegal Burger", price: "$$", rating: 4, categories: Array(2), latitude: 39.72607, …}
+        // categories
+        // :
+        // (2) [{…}, {…}]
+        // city
+        // :
+        // "Denver"
+        // latitude
+        // :
+        // 39.72607
+        // longitude
+        // :
+        // -104.98403
+        // name
+        // :
+        // "Illegal Burger"
+        // price
+        // :
+        // "$$"
+        // rating
+        // :
+        // 4
+        // state
+        // :
+        // "CO"
+        // street_address
+        // :
+        // "609 Grant St"
+        // zip_code
+        // :
+        // "80203"
+        // __proto__
+        // :
+        // Object
       );
     } else if (this.state.goHome) {
       content = <LandingPage />

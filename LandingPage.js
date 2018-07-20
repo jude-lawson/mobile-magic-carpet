@@ -25,13 +25,23 @@ export default class LandingPage extends Component {
   createAdventure() {
     fetch('http://localhost:3000/api/v1/adventures', {
       method: 'POST',
-      body: JSON.stringify({ name: 'An adventure' })
+      body: JSON.stringify({
+        preferences: {
+        "open_now": true,
+        "radius": 1000,
+        "latitude": 39.7293,
+        "longitude": -104.9844,
+        "price": "1,2,3",
+        "term": "restaurants"
+        }
+      })
     })
      .then((response) => response.json())
      .then((parsedResponse) => {
+       console.log(parsedResponse.destination)
        this.setState(() => ({
          rideCalled: true,
-         content: parsedResponse.message
+         content: parsedResponse.destination
        }))
      })
      .catch((error) => {
@@ -62,7 +72,7 @@ export default class LandingPage extends Component {
         </>
       );
     } else if (this.state.rideCalled) {
-      pageContent = <EstimatePage price={this.state.content} />
+      pageContent = <EstimatePage price={this.state.content.price} data={this.state.content} />
     } else if (this.state.openSettings) {
       pageContent = <SettingsPage />
     }
