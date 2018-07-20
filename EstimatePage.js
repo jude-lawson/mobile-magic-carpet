@@ -3,7 +3,7 @@ import { Card, Button, Text } from 'react-native-elements';
 
 import LandingPage from './LandingPage'
 
-export default class ConfirmationPage extends Component {
+export default class EstimatePage extends Component {
   constructor(props) {
     super(props);
 

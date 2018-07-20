@@ -4,7 +4,7 @@ import { Text } from 'react-native-elements';
 
 import SettingsIcon from './SettingsIcon';
 import MagicCarpetButton from './MagicCarpetButton';
-import ConfirmationPage from './ConfirmationPage';
+import EstimatePage from './EstimatePage';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ export default class LandingPage extends Component {
         </>
       );
     } else {
-      pageContent = <ConfirmationPage price={this.state.content} />
+      pageContent = <EstimatePage price={this.state.content} />
     }
 
     return (
