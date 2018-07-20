@@ -12,10 +12,13 @@ export default class LandingPage extends Component {
     super(props);
     this.state = {
       content: 'This is the current body',
-      rideCalled: false
+      rideCalled: false,
+      openSettings: false
     }
+
     this.createAdventure = this.createAdventure.bind(this)
     this.handleHomeClick = this.handleHomeClick.bind(this)
+    this.renderSettingsPage = this.renderSettingsPage.bind(this)
   }
 
   createAdventure() {
@@ -41,19 +44,26 @@ export default class LandingPage extends Component {
     }));
   }
 
+  renderSettingsPage() {
+    this.setState(() => ({
+      openSettings: true
+    }));
+  }
+
   render() {
     let pageContent;
-    if (!this.state.rideCalled) {
+    if (!this.state.rideCalled && !this.state.openSettings) {
       pageContent = (
         <>
           <HomeButton handleHomeClick={this.handleHomeClick} />
-          <SettingsIcon />
+          <SettingsIcon renderSettings={this.renderSettingsPage} />
           <MagicCarpetButton clickEvent={this.createAdventure} />
-          <Text>{this.state.content}</Text>
         </>
       );
-    } else {
+    } else if (this.state.rideCalled) {
       pageContent = <EstimatePage price={this.state.content} />
+    } else if (this.state.openSettings) {
+      pageContent = <Text>This is the settings page</Text>
     }
 
     return (

@@ -3,6 +3,10 @@ import { StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 
 export default class SettingsIcon extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Icon
@@ -10,7 +14,7 @@ export default class SettingsIcon extends Component {
         name='settings'
         size={40}
         color='#7998fe'
-        onPress={() => alert('hello')} />
+        onPress={this.props.renderSettings} />
     );
   }
 }
