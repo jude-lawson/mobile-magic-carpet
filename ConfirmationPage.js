@@ -41,6 +41,11 @@ export default class ConfirmationPage extends Component {
           <Button 
             raised
             large
+            buttonStyle={{
+              borderRadius: 50,
+              marginTop: 20,
+              backgroundColor: '#4fb859'
+            }}
             title='Reveal Your Destination'
             onPress={this.revealDestination} />
         </>
