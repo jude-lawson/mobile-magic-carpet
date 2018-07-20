@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import { Card, Button, Text } from 'react-native-elements';
 
+import LandingPage from './LandingPage';
+import HomeButton from './HomeButton';
+
 export default class ConfirmationPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      desinationVisible: false
+      desinationVisible: false,
+      goHome: false
     }
 
     this.revealDestination = this.revealDestination.bind(this)
+    this.handleHomeClick = this.handleHomeClick.bind(this)
   }
 
   revealDestination() {
@@ -18,10 +23,17 @@ export default class ConfirmationPage extends Component {
     }));
   }
 
+  handleHomeClick() {
+    this.setState(() => ({
+      goHome: true
+    }));
+  }
+
   render() {
-    if (!this.state.destinationVisible) {
+    if (!this.state.destinationVisible && !this.state.goHome) {
       content = (
         <>
+          <HomeButton handleHomeClick={this.handleHomeClick} />
           <Card
             title='Hooray!' >
             <Text>Your ride is on its way!</Text>
@@ -35,12 +47,18 @@ export default class ConfirmationPage extends Component {
       );
     } else if (this.state.destinationVisible) {
       content = (
-        <Card
-          title='This is your destination'>
-          <Text></Text>
-        </Card>
+        <>
+          <HomeButton handleHomeClick={this.handleHomeClick} />
+          <Card
+            title='This is your destination'>
+            <Text></Text>
+          </Card>
+        </>
       );
+    } else if (this.state.goHome) {
+      content = <LandingPage />
     }
+
     return (
       <>
         {content}

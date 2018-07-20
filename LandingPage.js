@@ -5,6 +5,7 @@ import { Text } from 'react-native-elements';
 import SettingsIcon from './SettingsIcon';
 import MagicCarpetButton from './MagicCarpetButton';
 import EstimatePage from './EstimatePage';
+import HomeButton from './HomeButton';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class LandingPage extends Component {
       rideCalled: false
     }
     this.createAdventure = this.createAdventure.bind(this)
+    this.handleHomeClick = this.handleHomeClick.bind(this)
   }
 
   createAdventure() {
@@ -33,11 +35,18 @@ export default class LandingPage extends Component {
      })
   }
 
+  handleHomeClick() {
+    this.setState(() => ({
+      rideCalled: false
+    }));
+  }
+
   render() {
     let pageContent;
     if (!this.state.rideCalled) {
       pageContent = (
         <>
+          <HomeButton handleHomeClick={this.handleHomeClick} />
           <SettingsIcon />
           <MagicCarpetButton clickEvent={this.createAdventure} />
           <Text>{this.state.content}</Text>
