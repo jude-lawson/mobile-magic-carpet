@@ -6,6 +6,7 @@ import SettingsIcon from './SettingsIcon';
 import MagicCarpetButton from './MagicCarpetButton';
 import EstimatePage from './EstimatePage';
 import HomeButton from './HomeButton';
+import SettingsPage from './SettingsPage';
 
 export default class LandingPage extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ export default class LandingPage extends Component {
     } else if (this.state.rideCalled) {
       pageContent = <EstimatePage price={this.state.content} />
     } else if (this.state.openSettings) {
-      pageContent = <Text>This is the settings page</Text>
+      pageContent = <SettingsPage />
     }
 
     return (
