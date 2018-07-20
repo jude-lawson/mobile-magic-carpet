@@ -36,11 +36,13 @@ export default class LandingPage extends Component {
   render() {
     let pageContent;
     if (!this.state.rideCalled) {
-      pageContent = ([
-        <SettingsIcon />,
-        <MagicCarpetButton clickEvent={this.createAdventure} />,
-        <Text>{this.state.content}</Text>
-      ]);
+      pageContent = (
+        <>
+          <SettingsIcon />
+          <MagicCarpetButton clickEvent={this.createAdventure} />
+          <Text>{this.state.content}</Text>
+        </>
+      );
     } else {
       pageContent = <ConfirmationPage />
     }
