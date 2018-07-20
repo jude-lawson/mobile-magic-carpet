@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from 'react-native-elements';
+import { Card, Slider, Text, Button } from 'react-native-elements';
 
 import LandingPage from './LandingPage';
 import HomeButton from './HomeButton';
@@ -28,7 +28,24 @@ export default class SettingsPage extends Component {
         <>
           <HomeButton handleHomeClick={this.handleHomeClick} />
           <Card
-            title='Settings' />
+            wrapperStyle={{ width: 300 }}
+            title='Settings'>
+            <Text>Radius: </Text>
+            <Slider
+              thumbTintColor='#9659fb' />
+            <Text>Minimum Price: </Text>
+            <Slider 
+              thumbTintColor='#9659fb' />
+            <Text>Rating: </Text>
+            <Slider
+              thumbTintColor='#9659fb' />
+            <Button
+              buttonStyle={{
+                marginTop: 12
+              }}
+              backgroundColor='#7998fe'
+              title='SAVE' />
+          </Card>
         </> 
       )
     } else if (this.state.goHome) {
