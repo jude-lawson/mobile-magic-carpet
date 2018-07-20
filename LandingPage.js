@@ -44,7 +44,7 @@ export default class LandingPage extends Component {
         </>
       );
     } else {
-      pageContent = <ConfirmationPage />
+      pageContent = <ConfirmationPage price={this.state.content} />
     }
 
     return (
