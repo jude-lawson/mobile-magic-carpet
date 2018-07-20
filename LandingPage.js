@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Text } from 'react-native-elements';
 
 import SettingsIcon from './SettingsIcon'
 import MagicCarpetButton from './MagicCarpetButton'
@@ -41,10 +42,9 @@ export default class LandingPage extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#7998fe'
+  mainHeading: {
+    color: '#7998fe',
+    position: 'absolute',
+    top: 100
   }
 });

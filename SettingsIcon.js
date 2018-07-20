@@ -9,6 +9,7 @@ export default class SettingsIcon extends Component {
         containerStyle={styles.settingsIcon}
         name='settings'
         size={40}
+        color='#7998fe'
         onPress={() => alert('hello')} />
     );
   }
@@ -18,6 +19,6 @@ const styles = StyleSheet.create({
   settingsIcon: {
     position: 'absolute',
     top: 40,
-    right: 20
+    right: 20,
   }
 });
