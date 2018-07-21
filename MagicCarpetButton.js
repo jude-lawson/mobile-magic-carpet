@@ -9,6 +9,7 @@ export default class MagicCarpetButton extends Component {
     return (
       <Button
         raised
+        large
         title='Magic Carpet'
         buttonStyle={{
           backgroundColor: '#ab37b6',

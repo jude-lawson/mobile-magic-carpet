@@ -30,7 +30,6 @@ export default class App extends Component {
   }
 
   render() {
-
     let page;
     if (!this.state.isLoggedIn) {
       page = <LoginPage handler={this.logIn} />

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { StyleSheet } from 'react-native';
 import { Icon } from 'react-native-elements';
 
-export default class SettingsIcon extends Component {
+export default class HomeButton extends Component {
   constructor(props) {
     super(props);
   }
@@ -10,19 +10,19 @@ export default class SettingsIcon extends Component {
   render() {
     return (
       <Icon
-        containerStyle={styles.settingsIcon}
-        name='settings'
-        size={40}
+        containerStyle={styles.homeButtonContainer}
+        size={50}
         color='#7998fe'
-        onPress={this.props.renderSettings} />
+        name='home'
+        onPress={this.props.handleHomeClick} />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  settingsIcon: {
+  homeButtonContainer: {
     position: 'absolute',
     top: 40,
-    right: 20,
+    left: 20
   }
 });
