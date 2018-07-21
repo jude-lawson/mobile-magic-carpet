@@ -8,31 +8,32 @@
 
 import React, {Component} from 'react';
 import { StyleSheet, View } from 'react-native';
-
 import LandingPage from './LandingPage'
 import LoginPage from './LoginPage'
+import OAuthProcess from './OAuthProcess';
+
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isLoggedIn: false
+      loggedIn: false
     }
 
     this.logIn = this.logIn.bind(this)
   }
 
   logIn() {
-    this.setState(() => ({ 
-      isLoggedIn: true
-    }))
+    this.setState(() => ({
+      loggedIn: true
+    }));
   }
 
   render() {
     let page;
-    if (!this.state.isLoggedIn) {
-      page = <LoginPage handler={this.logIn} />
+    if (!this.state.loggedIn) {
+      page = <OAuthProcess handler={this.logIn} />
     } else {
       page = <LandingPage />
     }
