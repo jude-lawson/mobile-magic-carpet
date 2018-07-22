@@ -11,7 +11,13 @@ export default class SettingsPage extends Component {
     super(props);
 
     this.state = {
-      goHome: false
+      goHome: false,
+      minRating: 2,
+      maxRating: 4,
+      minPrice: 2,
+      maxPrice: 3,
+      minRadius: 2,
+      maxRadius: 4
     }
 
     this.handleHomeClick = this.handleHomeClick.bind(this);
@@ -41,9 +47,11 @@ export default class SettingsPage extends Component {
               minValue={1}
               maxValue={5}
               tintColor={'#9659fb'}
-              selectedMinimum={2}
-              selectedMaximum={4}
+              selectedMinimum={this.state.minRadius}
+              selectedMaximum={this.state.maxRadius}
               lineHeight={1.5}
+              onValueChange={selectedMinimum => this.setState({ minRadius: selectedMinimum })}
+              onValueChange={selectedMaximum => this.setState({ maxRadius: selectedMaximum })}
             />
             <Text style={styles.setting}>
               Price(Yelp $):
@@ -52,9 +60,11 @@ export default class SettingsPage extends Component {
               minValue={1}
               maxValue={4}
               tintColor={'#9659fb'}
-              selectedMinimum={2}
-              selectedMaximum={3}
+              selectedMinimum={this.state.minPrice}
+              selectedMaximum={this.state.maxPrice}
               lineHeight={1.5}
+              onValueChange={selectedMinimum => this.setState({ minPrice: selectedMinimum })}
+              onValueChange={selectedMaximum => this.setState({ maxPrice: selectedMaximum })}
             />
             <Text style={styles.setting}>
               Rating(stars):
@@ -63,9 +73,11 @@ export default class SettingsPage extends Component {
               minValue={1}
               maxValue={5}
               tintColor={'#9659fb'}
-              selectedMinimum={2}
-              selectedMaximum={4}
+              selectedMinimum={this.state.minRating}
+              selectedMaximum={this.state.maxRating}
               lineHeight={1.5}
+              onValueChange={selectedMinimum => this.setState({ minRating: selectedMinimum })}
+              onValueChange={selectedMaximum => this.setState({ maxRating: selectedMaximum })}
             />
             <Button
               buttonStyle={{
