@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Card, Slider, Text, Button } from 'react-native-elements';
+import { StyleSheet } from 'react-native'
+import { Card, Text, Button, View } from 'react-native-elements';
+import RangeSlider from 'react-native-range-slider'
 
 import LandingPage from './LandingPage';
 import HomeButton from './HomeButton';
@@ -28,17 +30,43 @@ export default class SettingsPage extends Component {
         <>
           <HomeButton handleHomeClick={this.handleHomeClick} />
           <Card
-            wrapperStyle={{ width: 300 }}
-            title='Settings'>
-            <Text>Radius: </Text>
-            <Slider
-              thumbTintColor='#9659fb' />
-            <Text>Minimum Price: </Text>
-            <Slider 
-              thumbTintColor='#9659fb' />
-            <Text>Rating: </Text>
-            <Slider
-              thumbTintColor='#9659fb' />
+            wrapperStyle={{ width: 300 }}>
+            <Text style={styles.card_heading}>
+              Settings
+            </Text>
+            <Text style={styles.setting}>
+              Radius(miles):
+            </Text>
+            <RangeSlider style={styles.slider}
+              minValue={1}
+              maxValue={5}
+              tintColor={'#9659fb'}
+              selectedMinimum={2}
+              selectedMaximum={4}
+              lineHeight={1.5}
+            />
+            <Text style={styles.setting}>
+              Price(Yelp $):
+            </Text>
+            <RangeSlider style={styles.slider}
+              minValue={1}
+              maxValue={4}
+              tintColor={'#9659fb'}
+              selectedMinimum={2}
+              selectedMaximum={3}
+              lineHeight={1.5}
+            />
+            <Text style={styles.setting}>
+              Rating(stars):
+            </Text>
+            <RangeSlider style={styles.slider}
+              minValue={1}
+              maxValue={5}
+              tintColor={'#9659fb'}
+              selectedMinimum={2}
+              selectedMaximum={4}
+              lineHeight={1.5}
+            />
             <Button
               buttonStyle={{
                 marginTop: 12
@@ -46,7 +74,7 @@ export default class SettingsPage extends Component {
               backgroundColor='#7998fe'
               title='SAVE' />
           </Card>
-        </> 
+        </>
       )
     } else if (this.state.goHome) {
       content = <LandingPage />
@@ -59,3 +87,21 @@ export default class SettingsPage extends Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  card_heading: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    textAlign: 'center',
+    padding: 20
+  },
+  setting: {
+    fontWeight: 'bold',
+    fontSize: 18
+  },
+  slider: {
+    flex: 1,
+    height: 70,
+    padding: 35
+  }
+});

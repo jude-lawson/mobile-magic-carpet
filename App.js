@@ -24,7 +24,7 @@ export default class App extends Component {
   }
 
   logIn() {
-    this.setState(() => ({ 
+    this.setState(() => ({
       isLoggedIn: true
     }))
   }
@@ -44,7 +44,6 @@ export default class App extends Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
