@@ -1,17 +1,7 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Linking } from 'react-native';
 import LandingPage from './LandingPage'
 import LoginPage from './LoginPage'
-import OAuthProcess from './OAuthProcess';
-
 
 export default class App extends Component {
   constructor(props) {
@@ -19,9 +9,7 @@ export default class App extends Component {
 
     this.state = {
       loggedIn: false
-    }
-
-    this.logIn = this.logIn.bind(this)
+    };
   }
 
   logIn() {
@@ -32,10 +20,10 @@ export default class App extends Component {
 
   render() {
     let page;
-    if (!this.state.loggedIn) {
-      page = <OAuthProcess handler={this.logIn} />
-    } else {
+    if (this.state.loggedIn) {
       page = <LandingPage />
+    } else {
+      page = <LoginPage handler={this.logIn} />
     }
 
     return (
