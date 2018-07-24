@@ -11,6 +11,8 @@
 #import <React/RCTLinkingManager.h>
 #import <React/RCTRootView.h>
 
+
+
 @implementation AppDelegate
 // - (BOOL)application:(UIApplication *)application
 //   openURL:(NSURL *)url
@@ -19,6 +21,7 @@
 //   {
 //   return [RCTLinkingManager application:application openURL:url sourceApplication:sourceApplication annotation:annotation];
 // }
+
 
 - (BOOL)application:(UIApplication *)application
   opernURL:(NSURL *)url
