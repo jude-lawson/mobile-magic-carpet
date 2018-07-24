@@ -24,7 +24,15 @@ export default class LoginPage extends Component {
       fromBottom: true,
     })
   };
-  // Linking.addEventListener( 'url', this.handleOpenUrl );
+
+  componentDidMount() {
+    Linking.addEventListener( 'url', this.scream );
+    console.log(Linking.addEventListener( 'url', this.scream ))
+  }
+
+  scream() {
+    console.log('SCREAM!!!!!!!!!!!')
+  }
 
   // handleOpenUrl( event ) {
   //   console.log('1')
