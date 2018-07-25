@@ -17,7 +17,7 @@ export default class LoginPage extends Component {
     // this.changeStatus = this.changeStatus.bind(this)
     this.handleCallback = this.handleCallback.bind(this)
   };
-  //
+
   openURL = (url) => {
     SafariView.show({
       url: url,
@@ -52,12 +52,14 @@ export default class LoginPage extends Component {
       .then((parsedResponse) => {
         console.log(parsedResponse);
         SafariView.dismiss();
-      //   this.changeStatus;
+        this.setState(() => ({
+          lyftReady: true
+        }));
       // SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
       // SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
     });
   }
-  
+
   // changeStatus() {
   //   this.setState(() => ({
   //     lyftReady: true
