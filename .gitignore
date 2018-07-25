@@ -56,3 +56,4 @@ buck-out/
 *.jsbundle
 ios/index
 config.js
+android/app/src/main/assets/fonts
