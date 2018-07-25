@@ -52,9 +52,13 @@ export default class LoginPage extends Component {
       .then((parsedResponse) => {
         console.log(parsedResponse);
         SafariView.dismiss();
-        this.setState(() => ({
-          loggedIn: true
-        }));
+        if (auth_code === 'access_denied') {
+          return
+        } else {
+          this.setState(() => ({
+            loggedIn: true
+          }));
+        }
       // SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
       // SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
     });
