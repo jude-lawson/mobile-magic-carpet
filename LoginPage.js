@@ -6,6 +6,7 @@ import { lyft_client_id, lyft_client_secret } from './config.js';
 import LandingPage from './LandingPage'
 import SInfo from 'react-native-sensitive-info'
 import LyftService from './LyftService'
+import ApiService from './ApiService'
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -39,12 +40,20 @@ export default class LoginPage extends Component {
       if (auth_code === 'access_denied') {
         return
       } else {
-        this.setState(() => ({
-          loggedIn: true
-        }));
         SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
         SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
+        response = ApiService.createUser()
+        if (response["user_id"]){
+          SInfo.setItem("user_id", response["user_id"], {});
+          this.setState(() => ({
+            loggedIn: true
+          }))
+        } else {
+          throw "error, server side"
+        }
+        
       }
+
       SafariView.dismiss();
     })
   }
