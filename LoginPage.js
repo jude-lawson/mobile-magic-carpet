@@ -5,6 +5,7 @@ import LyftLoginButton from './LyftLoginButton';
 import { lyft_client_id, lyft_client_secret } from './config.js';
 import LandingPage from './LandingPage'
 import SInfo from 'react-native-sensitive-info'
+import LyftService from './LyftService'
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -32,30 +33,20 @@ export default class LoginPage extends Component {
     const auth_code = event.url.split('?')[1].split('&')[0].split('=')[1]
     const enc_client_auth = btoa(`${lyft_client_id}:${lyft_client_secret}`)
 
-    fetch('https://api.lyft.com/oauth/token', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        'Authorization': `Basic ${enc_client_auth}`
-      },
-      body: JSON.stringify({
-        "grant_type": "authorization_code",
-        "code": auth_code
-      })
+    LyftService.authorize(auth_code, enc_client_auth)
+    .then((response) => response.json())
+    .then((parsedResponse) => {
+      if (auth_code === 'access_denied') {
+        return
+      } else {
+        this.setState(() => ({
+          loggedIn: true
+        }));
+        SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
+        SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
+      }
+      SafariView.dismiss();
     })
-      .then((response) => response.json())
-      .then((parsedResponse) => {
-        SafariView.dismiss();
-        if (auth_code === 'access_denied') {
-          return
-        } else {
-          this.setState(() => ({
-            loggedIn: true
-          }));
-          SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
-          SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
-        }
-    });
   }
 
   render() {
