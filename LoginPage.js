@@ -11,7 +11,7 @@ export default class LoginPage extends Component {
     super(props);
 
     this.state = {
-      lyftReady: false
+      loggedIn: false
     }
 
     // this.changeStatus = this.changeStatus.bind(this)
@@ -53,22 +53,16 @@ export default class LoginPage extends Component {
         console.log(parsedResponse);
         SafariView.dismiss();
         this.setState(() => ({
-          lyftReady: true
+          loggedIn: true
         }));
       // SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
       // SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
     });
   }
 
-  // changeStatus() {
-  //   this.setState(() => ({
-  //     lyftReady: true
-  //   }));
-  // }
-
   render() {
     let page;
-    if (this.state.lyftReady) {
+    if (this.state.loggedIn) {
       page = <LandingPage />
     } else {
       page = <LyftLoginButton clickEvent={() => this.openURL(`https://www.lyft.com/oauth/authorize_app?client_id=${lyft_client_id}&scope=public%20profile%20rides.read%20rides.request%20offline&state=%3Cstate_string%3E&response_type=code`)}/>
