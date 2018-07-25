@@ -30,7 +30,6 @@ export default class LoginPage extends Component {
   }
 
   handleCallback(event) {
-    console.log('SCREAM!!!!!!!!!!!')
     console.log(event)
 
     const auth_code = event.url.split('?')[1].split('&')[0].split('=')[1]
@@ -53,43 +52,12 @@ export default class LoginPage extends Component {
       .then((parsedResponse) => {
         console.log(parsedResponse);
         SafariView.dismiss();
+      //   this.changeStatus;
       // SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
       // SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
     });
   }
-
-  // handleOpenUrl( event ) {
-  //   console.log('1')
-  //   const auth_code = event.url.toString().match( /code=([^&]+)/ );
-  //   console.log('2')
-  //   console.log(auth_code);
-  //   if ( auth_code ) {
-  //     console.log('3')
-  //     fetch('https://api.lyft.com/oauth/token', {
-  //       method: 'post',
-  //       headers: {
-  //         'Content-Type': 'application/json;charset=UTF-8',
-  //         'Authorization': 'Basic '+btoa(lyft_client_id + ':' + lyft_client_secret)
-  //       },
-  //       body: JSON.stringify({
-  //         "grant_type": "authorization_code",
-  //         "code": auth_code[1]
-  //       })
-  //     })
-  //     .then((response) => response.json())
-  //     .then((parsedResponse) => {
-  //       console.log(parsedResponse);
-  //       SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
-  //       SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
-  //     });
-  //   }
-  //   else {
-  //     reject( 'params' );
-  //   };
-  //   SafariView.dismiss();
-  //   this.changeStatus;
-  // };
-  //
+  
   // changeStatus() {
   //   this.setState(() => ({
   //     lyftReady: true
