@@ -17,7 +17,7 @@ export default class LyftLoginButton extends Component {
           backgroundColor: '#ab37b6',
           borderRadius: 50
         }}
-        onPress={this.props.handler}
+        onPress={this.props.clickEvent}
         title='Log In With Lyft' />
     );
   }
