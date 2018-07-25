@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Linking , AsyncStorage } from 'react-native';
 import SafariView from 'react-native-safari-view';
 import LyftLoginButton from './LyftLoginButton';
-import { lyft_client_id, lyft_client_secret } from './config.js';
+// import { lyft_client_id, lyft_client_secret } from './config.js';
 import LandingPage from './LandingPage'
 import SInfo from 'react-native-sensitive-info'
 
