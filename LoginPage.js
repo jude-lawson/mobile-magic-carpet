@@ -5,17 +5,11 @@ import LyftLoginButton from './LyftLoginButton';
 import { lyft_client_id, lyft_client_secret } from './config.js';
 import LandingPage from './LandingPage'
 import { authorize } from 'react-native-app-auth';
-import SInfo from 'react-native-sensitive-info'
+// import SInfo from 'react-native-sensitive-info'
 
 export default class LoginPage extends Component {
   constructor(props) {
     super(props);
-    const config = {
-      issuer: 'https://www.lyft.com/oauth/authorize_app',
-      clientId: lyft_client_id,
-      redirectUrl: '<YOUR_REDIRECT_URL>',
-      scopes: ['public', 'profile', 'rides.read', 'rides.request', 'offline'],
-    };
 
     this.state = {
       lyftReady: false
@@ -80,8 +74,23 @@ export default class LoginPage extends Component {
       fromBottom: true,
     })
   };
-  beginOAuth(){
-    this.openURL('https://www.lyft.com/oauth/authorize_app?client_id=hyyGpFDSm3OM&scope=public%20profile%20rides.read%20rides.request%20offline&state=%3Cstate_string%3E&response_type=code')
+  async beginOAuth(){
+    const config = {
+      issuer: 'https://www.lyft.com/oauth/authorize_app',
+      clientId: lyft_client_id,
+      redirectUrl: 'magic-carpet-app://authorize',
+      scopes: ['public', 'profile', 'rides.read', 'rides.request', 'offline'],
+    };
+    console.log(config)
+    // this.openURL('https://www.lyft.com/oauth/authorize_app?client_id=hyyGpFDSm3OM&scope=public%20profile%20rides.read%20rides.request%20offline&state=%3Cstate_string%3E&response_type=code')
+    // authorize(config)
+      try {
+        console.log('try block')
+        const result = await authorize(config);
+        // result includes accessToken, accessTokenExpirationDate and refreshToken
+      } catch (error) {
+        console.log(error);
+      }
   }  
 
   render() {
