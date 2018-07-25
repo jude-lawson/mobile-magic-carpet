@@ -14,7 +14,6 @@ export default class LoginPage extends Component {
       loggedIn: false
     }
 
-    // this.changeStatus = this.changeStatus.bind(this)
     this.handleCallback = this.handleCallback.bind(this)
   };
 
@@ -30,12 +29,8 @@ export default class LoginPage extends Component {
   }
 
   handleCallback(event) {
-    console.log(event)
-
     const auth_code = event.url.split('?')[1].split('&')[0].split('=')[1]
-    console.log(auth_code)
     const enc_client_auth = btoa(`${lyft_client_id}:${lyft_client_secret}`)
-    console.log(enc_client_auth)
 
     fetch('https://api.lyft.com/oauth/token', {
       method: 'post',
@@ -50,7 +45,6 @@ export default class LoginPage extends Component {
     })
       .then((response) => response.json())
       .then((parsedResponse) => {
-        console.log(parsedResponse);
         SafariView.dismiss();
         if (auth_code === 'access_denied') {
           return
@@ -58,9 +52,9 @@ export default class LoginPage extends Component {
           this.setState(() => ({
             loggedIn: true
           }));
+          SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
+          SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
         }
-      // SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
-      // SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
     });
   }
 
