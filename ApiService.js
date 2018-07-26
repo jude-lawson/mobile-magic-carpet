@@ -1,11 +1,13 @@
-var jwt = require('jwt-simple');
+import JWT from 'expo-jwt'
 import { handshake, host_url, api_version } from './config'
+import SInfo from 'react-native-sensitive-info'
+
 class ApiService{
   static encodeJwt(payload){
-    return jwt.encode(payload, handshake)
+    return JWT.encode(payload, handshake)
   }
   static decodeJwt(payload){
-    return jwt.decode(payload, handshake)
+    return JWT.decode(payload, handshake)
   }
  
   static createAdventure(){
@@ -27,9 +29,9 @@ class ApiService{
 
   static setPayloadHeaders(extra){
     return {
-      api_key: getFromKeychain("api_key"),
-      refresh_token: getFromKeychain("refresh_key"),
-      id: getFromKeychain("id"),
+      api_key: ApiService.getFromKeychain("api_key"),
+      refresh_token: ApiService.getFromKeychain("refresh_key"),
+      id: ApiService.getFromKeychain("id"),
       extra: extra
     }
   }
@@ -39,14 +41,13 @@ class ApiService{
     fetch(`${host_url}/${api_version}/${url_extension}`, {
       method: method,
       headers: {
-        payload: encodeJwt(setPayloadHeaders(headers)),
+        payload: ApiService.encodeJwt(ApiService.setPayloadHeaders(headers)),
       }
     })
     .then((data)=>{
-      return decodeJwt(data.json()["payload"])
+      return ApiService.decodeJwt(data.json()["payload"])
     })
     .catch((error)=>console.log(error));
   }
-
-
 }
+export default ApiService
