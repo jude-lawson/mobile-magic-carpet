@@ -40,9 +40,11 @@ export default class LoginPage extends Component {
       if (auth_code === 'access_denied') {
         return
       } else {
-        SInfo.setItem('lyftToken', parsedResponse['access_token'], {});
-        SInfo.setItem('lyftRefreshToken', parsedResponse['refresh_token'], {});
+        SInfo.setItem('lyft_token', parsedResponse['access_token'], {});
+        SInfo.setItem('lyft_refresh_token', parsedResponse['refresh_token'], {});
+        // console.log(parsedResponse)
         response = ApiService.createUser()
+        // console.log(response["user_id"])
         if (response["user_id"]){
           SInfo.setItem("user_id", response["user_id"], {});
           this.setState(() => ({
