@@ -7,6 +7,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "expo-jwt": "^1.0.2",
+    "jwt-simple": "^0.5.1",
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-elements": "^0.19.1",
