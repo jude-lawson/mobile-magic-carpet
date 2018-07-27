@@ -30,13 +30,13 @@ class ApiService{
     // .catch((error)=>{console.log(null,error)})
   }
 
-  static resolveAfter25Seconds(x) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        resolve(x);
-      }, 2000)
-    })
-  }
+  // static resolveAfter25Seconds(x) {
+  //   return new Promise(resolve => {
+  //     setTimeout(() => {
+  //       resolve(x);
+  //     }, 2000)
+  //   })
+  // }
 
   static async setPayloadHeaders(extra=null){
     let lyft_token = await ApiService.getFromKeychain("lyft_token")
@@ -67,10 +67,16 @@ class ApiService{
         }
       })
       .then((data)=>{
-        return ApiService.decodeJwt(data.json()["payload"])
+        console.log(data._bodyText)
+        return data._bodyText
+      })
+      .then((response)=> {
+        console.log(response)
+        ApiService.decodeJwt(response.json()["payload"])
       })
       .catch((error)=>console.log(error))
     })
+    .catch((error)=>console.log(error));
   }
 }
 export default ApiService

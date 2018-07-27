@@ -42,18 +42,23 @@ export default class LoginPage extends Component {
       } else {
         SInfo.setItem('lyft_token', parsedResponse['access_token'], {});
         SInfo.setItem('lyft_refresh_token', parsedResponse['refresh_token'], {});
-        // console.log(parsedResponse)
-        response = ApiService.createUser()
-        // console.log(response["user_id"])
-        if (response["user_id"]){
-          SInfo.setItem("user_id", response["user_id"], {});
-          this.setState(() => ({
-            loggedIn: true
-          }))
-        } else {
-          throw "error, server side"
-        }
-        
+        console.log("parsed response from lyft:")
+        console.log(parsedResponse)
+
+        ApiService.createUser()
+          .then((response)=>{
+            console.log("parsed response from us:")
+            console.log(response)
+            return response._textBody
+            if (response["user_id"]){
+              SInfo.setItem("id", response["id"], {});
+              this.setState(() => ({
+                loggedIn: true
+              }))
+            } else {
+              throw "error, server side"
+            }
+          }).catch((error)=>{console.log(error)})
       }
 
       SafariView.dismiss();
